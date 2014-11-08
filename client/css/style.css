@@ -4,10 +4,11 @@
   padding:0;
 }
 body {
+  font-family:"Courier New";
   font-size:1rem;
 }
 button:hover {
-  background:#777;
+  background:#000;
   color:#eee;
   cursor:pointer;
 }
@@ -35,4 +36,8 @@ nav li {
 nav li a {
   display:inline-block;
   vertical-align:middle;
+}
+.review {
+  border-bottom:1px solid #000;
+  padding:1rem;
 }
