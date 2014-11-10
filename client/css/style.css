@@ -1,12 +1,15 @@
+/*reset*/
 * {
   border-sizing:border-box;
   margin:0;
   padding:0;
 }
+/*global*/
 body {
   font-family:"Courier New";
   font-size:1rem;
 }
+/*specific*/
 button:hover {
   background:#000;
   color:#eee;

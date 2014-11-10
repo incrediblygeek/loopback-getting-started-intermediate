@@ -1,12 +1,13 @@
 angular
-  .module('app', ['ngRoute'])
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'templates/reviews.html',
-        controller: 'ReviewsCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
+  .module('app', ['ui.router'])
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
+      $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '',
+        templateUrl: 'templates/home.html',
+        controller: 'HomeCtrl'
       });
+
+    $urlRouterProvider.otherwise('home');
   }]);

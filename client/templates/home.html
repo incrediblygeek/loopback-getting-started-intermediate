@@ -1,0 +1,34 @@
+<header>
+  <div ng-if="isLoggedIn">
+    <section class="menu">
+      <a ui-sref="add-review">Add review</a>
+    </section>
+  </div>
+
+  <section class="banner">
+    <h1>Coffee shop reviews</h1>
+  </section>
+
+  <section class="login">
+    <div ng-switch on="isLoggedIn">
+      <!--if not logged in, show login form in the header-->
+      <div ng-switch-when="false">
+        <form>
+          <input type="text" placeholder="Username" value="foo@bar.com">
+          <input type="password" placeholder="Password" value="foobar">
+          <button>Login</button>
+        </form>
+      </div>
+      <!--if logged in, show welcome message and logout button-->
+      <div ng-switch-when="true">
+       Welcome John <button>Log out</button>
+      </div>
+    </div>
+  </section>
+
+</header>
+
+<!--if not logged in, only show reviews-->
+<section class="content">
+  Reviews
+</section>
