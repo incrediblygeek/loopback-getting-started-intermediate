@@ -8,6 +8,5 @@ angular
         templateUrl: 'templates/home.html',
         controller: 'HomeCtrl'
       });
-
     $urlRouterProvider.otherwise('home');
   }]);

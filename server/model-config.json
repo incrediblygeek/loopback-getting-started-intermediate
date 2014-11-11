@@ -8,7 +8,8 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
@@ -25,5 +26,17 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Reviewer": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "CoffeeShop": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Review": {
+    "dataSource": "mongoDs",
+    "public": true
   }
 }
