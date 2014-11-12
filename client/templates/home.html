@@ -13,11 +13,13 @@
     <div ng-switch on="isLoggedIn">
       <!--if not logged in, show login form in the header-->
       <div ng-switch-when="false">
-        <form>
-          <input type="text" placeholder="Username" value="foo@bar.com">
-          <input type="password" placeholder="Password" value="foobar">
+        <form name="loginForm" novalidate>
+          <input type="text" required>
+          <input type="password" required>
           <button>Login</button>
         </form>
+        <div>The form is valid: {{loginForm.$invalid}}</div>
+        <div>The form is invalid: {{loginForm.$invalid}}</div>
       </div>
       <!--if logged in, show welcome message and logout button-->
       <div ng-switch-when="true">
@@ -28,7 +30,11 @@
 
 </header>
 
-<!--if not logged in, only show reviews-->
-<section class="content">
-  Reviews
-</section>
+<main>
+  <ul>
+    <li class="review" ng-repeat="r in reviews">
+      {{r.coffeeShop}}
+      {{r.date|date}} - {{r.rating}}&#9733; - {{r.publisherId}} - {{r.content}}
+    </li>
+  </ul>
+</main>

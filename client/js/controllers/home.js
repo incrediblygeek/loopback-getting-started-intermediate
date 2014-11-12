@@ -1,9 +1,12 @@
 angular
   .module('app')
-  .controller('HomeCtrl', ['$scope', function($scope, Review) {
-    $scope.isLoggedIn = true;
+  .controller('HomeCtrl', ['$scope', 'Review', function($scope, Review) {
+    $scope.isLoggedIn = false;
 
-    // get reviews
+    $scope.logIn = function(form) {
+      console.log(form);
+    };
+
     $scope.reviews = [];
     function getReviews() {
       Review
@@ -12,6 +15,10 @@ angular
         .then(function(reviews) {
           $scope.reviews = reviews;
         });
+      Review.findOne().$promise.then(function(review) {
+        console.log(review);
+      });
+
     };
     getReviews();
 
