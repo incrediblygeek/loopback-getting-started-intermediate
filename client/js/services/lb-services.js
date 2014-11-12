@@ -466,6 +466,12 @@ module.factory(
           url: urlBase + "/CoffeeShops/:id/reviewers/count",
           method: "GET",
         },
+
+        // INTERNAL. Use Review.reviewer() instead.
+        "::get::Review::reviewer": {
+          url: urlBase + "/Reviews/:id/reviewer",
+          method: "GET",
+        },
       }
     );
 
@@ -2029,6 +2035,12 @@ module.factory(
           method: "GET",
         },
 
+        // INTERNAL. Use Review.reviewer() instead.
+        "prototype$__get__reviewer": {
+          url: urlBase + "/Reviews/:id/reviewer",
+          method: "GET",
+        },
+
         /**
          * @ngdoc method
          * @name lbServices.Review#create
@@ -2625,6 +2637,42 @@ module.factory(
         R.coffeeShop = function() {
           var TargetResource = $injector.get("CoffeeShop");
           var action = TargetResource["::get::Review::coffeeShop"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Review#reviewer
+         * @methodOf lbServices.Review
+         *
+         * @description
+         *
+         * Fetches belongsTo relation reviewer
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Reviewer` object.)
+         * </em>
+         */
+        R.reviewer = function() {
+          var TargetResource = $injector.get("Reviewer");
+          var action = TargetResource["::get::Review::reviewer"];
           return action.apply(R, arguments);
         };
 

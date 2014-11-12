@@ -7,20 +7,16 @@ angular
       console.log(form);
     };
 
-    $scope.reviews = [];
-    function getReviews() {
-      Review
-        .find()
-        .$promise
-        .then(function(reviews) {
-          $scope.reviews = reviews;
-        });
-      Review.findOne().$promise.then(function(review) {
-        console.log(review);
-      });
-
-    };
-    getReviews();
+    $scope.reviews = Review.find({
+      filter: {
+        include: [
+          'coffeeShop',
+          'reviewer'
+        ]
+      }
+    }, function(reviews) {
+      console.log(reviews);
+    });
 
     $scope.addReview = function() {
       Review

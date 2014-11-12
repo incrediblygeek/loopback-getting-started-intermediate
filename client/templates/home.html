@@ -27,14 +27,13 @@
       </div>
     </div>
   </section>
-
 </header>
 
 <main>
   <ul>
     <li class="review" ng-repeat="r in reviews">
-      {{r.coffeeShop}}
-      {{r.date|date}} - {{r.rating}}&#9733; - {{r.publisherId}} - {{r.content}}
+      {{r.date | date}} - {{r.rating}}&#9733; - {{r.coffeeShop.name}} -
+      {{r.reviewer.email}} - {{r.content}}
     </li>
   </ul>
 </main>
