@@ -1,6 +1,6 @@
 {
   "name": "Reviewer",
-  "base": "PersistedModel",
+  "base": "User",
   "properties": {},
   "validations": [],
   "relations": {

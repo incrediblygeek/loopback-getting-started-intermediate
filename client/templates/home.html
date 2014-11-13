@@ -1,29 +1,27 @@
 <header>
+  <section class="banner">
+    <h1>Coffee shop reviews</h1>
+  </section>
+
   <div ng-if="isLoggedIn">
     <section class="menu">
       <a ui-sref="add-review">Add review</a>
     </section>
   </div>
 
-  <section class="banner">
-    <h1>Coffee shop reviews</h1>
-  </section>
-
   <section class="login">
     <div ng-switch on="isLoggedIn">
-      <!--if not logged in, show login form in the header-->
+      <!--if not logged in, show login form-->
       <div ng-switch-when="false">
-        <form name="loginForm" novalidate>
-          <input type="text" required>
-          <input type="password" required>
+        <form name="loginForm" ng-submit="logIn(loginForm)">
+          <input type="text" ng-model="user.email">
+          <input type="password" ng-model="user.password">
           <button>Login</button>
         </form>
-        <div>The form is valid: {{loginForm.$invalid}}</div>
-        <div>The form is invalid: {{loginForm.$invalid}}</div>
       </div>
-      <!--if logged in, show welcome message and logout button-->
+      <!--otherwise, show welcome message and logout button-->
       <div ng-switch-when="true">
-       Welcome John <button>Log out</button>
+        Welcome {{currentUser.email}} <button ng-click="logOut()">Log out</button>
       </div>
     </div>
   </section>

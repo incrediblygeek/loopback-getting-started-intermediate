@@ -1,33 +1,33 @@
 angular
   .module('app')
-  .factory('Auth', function(User) {
+  .factory('Auth', ['Reviewer', '$q', function(User, $q) {
+    var tokenId;
     var user;
-
-    function logIn() {
-      User.login({
-        email: user.email,
-        password: user.password
-      },
-      function(user) {
-        console.log('user');
-      },
-      function(err) {
-        console.log(err);
-        logOut();
-      });
-    }
-
-    function logOut() {
-      user = null;
-    }
-
-    function isLoggedIn() {
-      return (user);
-    }
-
     return {
-      logIn: logIn,
-      logOut: logOut,
-      isLoggedIn: isLoggedIn
+      isLoggedIn: function() {
+        return !!tokenId; //true if there is a token, false otherwise
+      },
+      logIn: function(email, password) {
+        var def = $q.defer();
+        User.login({
+          email: email,
+          password: password
+        }, function(token){
+          tokenId = token.id;
+          user = token.user;
+          def.resolve(token);
+        }, function(err) {
+          def.reject(err);
+        });
+        return def.promise;
+      },
+      logOut: function() {
+        User.logout();
+        tokenId = null;
+        user = null;
+      },
+      currentUser: function(){
+        return user;
+      }
     };
-  });
+  }]);

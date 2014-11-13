@@ -1,10 +1,11 @@
 angular
   .module('app')
-  .controller('HomeCtrl', ['$scope', 'Review', function($scope, Review) {
-    $scope.isLoggedIn = false;
-
-    $scope.logIn = function(form) {
-      console.log(form);
+  .controller('HomeCtrl', ['$scope', 'Review', 'Reviewer', 'Auth', '$rootScope', '$log',
+      function($scope, Review, Reviewer, Auth, $rootScope, $log) {
+    $scope.isLoggedIn = Auth.isLoggedIn();
+    $scope.user = {
+      email: 'foo@bar.com',
+      password: 'foobar'
     };
 
     $scope.reviews = Review.find({
@@ -14,9 +15,26 @@ angular
           'reviewer'
         ]
       }
-    }, function(reviews) {
-      console.log(reviews);
     });
+
+    $scope.$watch('isLoggedIn', function(newVal){
+      $scope.currentUser = Auth.currentUser();
+    });
+
+    $scope.logIn = function(form) {
+      if (form.$valid) {
+        Auth.logIn($scope.user.email, $scope.user.password)
+          .then(function(data){
+            $scope.isLoggedIn = Auth.isLoggedIn();
+            //$scope.currentUser = Auth.currentUser();
+          });
+      }
+    };
+
+    $scope.logOut = function() {
+      Auth.logOut();
+      $scope.isLoggedIn = Auth.isLoggedIn();
+    };
 
     $scope.addReview = function() {
       Review
