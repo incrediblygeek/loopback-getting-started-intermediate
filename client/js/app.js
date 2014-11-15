@@ -7,20 +7,34 @@ angular
       $urlRouterProvider) {
     $stateProvider
       .state('show-reviews', {
-        url: '/show',
+        url: '/show-reviews',
         templateUrl: 'views/show-reviews.html',
         controller: 'ReviewShowController'
       })
       .state('add-review', {
-        url: '/add',
+        url: '/add-review',
         templateUrl: 'views/add-review.html',
-        controller: 'ReviewAddController'
+        controller: 'ReviewAddController',
+        authenticate: true
       })
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginController'
+        controller: 'AuthLoginController'
+      })
+      .state('logout', {
+        url: '/logout',
+        controller: 'AuthLogoutController'
       });
     $urlRouterProvider.otherwise('show-reviews');
+  }])
+  .run(['$rootScope', '$state', function($rootScope, $state) {
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+      // redirect to login page if not logged in
+      if (next.authenticate && !$rootScope.currentUser) {
+        event.preventDefault(); //prevent current page from loading
+        $state.go('login');
+      }
+    });
   }]);
 

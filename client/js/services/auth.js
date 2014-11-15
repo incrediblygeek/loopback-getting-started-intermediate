@@ -1,55 +1,30 @@
 angular
   .module('app')
-  .factory('AuthService', ['Reviewer', '$q', function(User, $q) {
-    var tokenId;
-    var currentUser;
-
-    // function getCurrentUser() {
-    //   return currentUser;
-    // }
-
-    // function isLoggedIn() {
-    //   return !!tokenId; //true if there is a token, false otherwise
-    // }
-
+  .factory('AuthService', ['Reviewer', '$q', '$rootScope', function(User, $q,
+      $rootScope) {
     function login(email, password) {
-      console.log(arguments);
-      User.login({
-        email: email,
-        password: password
-      }, function(token) {
-        console.log(arguments);
-        //tokenId = token.id;
-        //currentUser = token.user;
-        //def.resolve(token);
-      }, function(err) {
-        console.log(arguments);
-        //def.reject(err);
-      });
-      // var def = $q.defer();
-      // User.login({
-      //   email: email,
-      //   password: password
-      // }, function(token) {
-      //   tokenId = token.id;
-      //   currentUser = token.user;
-      //   def.resolve(token);
-      // }, function(err) {
-      //   def.reject(err);
-      // });
-      // return def.promise;
+      return User.login({email: email, password: password})
+        .$promise
+        .then(function(response) {
+          console.log(response);
+          $rootScope.currentUser = {
+            id: response.user.id,
+            tokenId: response.id,
+            email: email,
+          };
+        });
     }
 
-    // function logOut {
-    //   User.logout();
-    //   tokenId = null;
-    //   currentUser = null;
-    // }
+    function logout() {
+     return User.logout()
+       .$promise
+       .then(function() {
+         $rootScope.currentUser = null;
+       });
+    }
 
     return {
       login: login,
-      // isLoggedIn: isLoggedIn,
-      // logOut: logOut
-      // getCurrentUser: getCurrentUser
+      logout: logout
     };
   }]);
