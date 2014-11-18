@@ -47,32 +47,33 @@ module.exports = function(app) {
     mongoDs.automigrate('Review', function(err) {
       if (err) return cb(err);
       var Review = app.models.Review;
+      var DAY_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
       Review.create([
         {
-          date: Date.now(),
+          date: Date.now() - (DAY_IN_MILLISECONDS * 4),
           rating: 5,
-          content: 'A very good coffee shop.',
+          comments: 'A very good coffee shop.',
           publisherId: reviewers[0].id,
           coffeeShopId: coffeeShops[0].id,
         },
         {
-          date: Date.now(),
+          date: Date.now() - (DAY_IN_MILLISECONDS * 3),
           rating: 5,
-          content: 'Quite pleasant.',
+          comments: 'Quite pleasant.',
           publisherId: reviewers[1].id,
           coffeeShopId: coffeeShops[0].id,
         },
         {
-          date: Date.now(),
+          date: Date.now() - (DAY_IN_MILLISECONDS * 2),
           rating: 4,
-          content: 'It was ok.',
+          comments: 'It was ok.',
           publisherId: reviewers[1].id,
           coffeeShopId: coffeeShops[1].id,
         },
         {
-          date: Date.now(),
+          date: Date.now() - (DAY_IN_MILLISECONDS),
           rating: 4,
-          content: 'I go here everyday',
+          comments: 'I go here everyday',
           publisherId: reviewers[2].id,
           coffeeShopId: reviewers[2].id,
         }

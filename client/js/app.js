@@ -15,7 +15,7 @@ angular
         url: '/add-review',
         templateUrl: 'views/add-review.html',
         controller: 'ReviewAddController',
-        authenticate: true
+        authenticate: true //redirect unauthenticated users
       })
       .state('login', {
         url: '/login',

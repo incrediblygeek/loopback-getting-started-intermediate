@@ -4,24 +4,27 @@
 
     <div class="form-group">
       <label>Coffee shop name</label>
-      <input type="text">
+      <select
+          ng-model="selectedShop"
+          ng-options="shop as shop.name for shop in coffeeShops"></select>
     </div>
 
     <div class="form-group">
       <label>Rating</label>
-      <input type="radio" name="rating" value="1">1&#9733;
-      <input type="radio" name="rating" value="2">2&#9733;
-      <input type="radio" name="rating" value="3">3&#9733;
-      <input type="radio" name="rating" value="4">4&#9733;
-      <input type="radio" name="rating" value="5">5&#9733;
+      <input type="radio" ng-model="rating" value="1">1&#9733;
+      <input type="radio" ng-model="rating" value="2">2&#9733;
+      <input type="radio" ng-model="rating" value="3">3&#9733;
+      <input type="radio" ng-model="rating" value="4">4&#9733;
+      <input type="radio" ng-model="rating" value="5">5&#9733;
     </div>
 
     <div class="form-group">
       <label>Comments</label>
-      <textarea name="comments"></textarea>
+      <textarea ng-model="comments"></textarea>
     </div>
 
     <div class="actions">
       <button>Add review</button>
     </div>
+  </fieldset>
 </form>

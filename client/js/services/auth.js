@@ -6,11 +6,10 @@ angular
       return User.login({email: email, password: password})
         .$promise
         .then(function(response) {
-          console.log(response);
           $rootScope.currentUser = {
             id: response.user.id,
             tokenId: response.id,
-            email: email,
+            email: email
           };
         });
     }
