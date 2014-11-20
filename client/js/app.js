@@ -6,16 +6,20 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     $stateProvider
-      .state('show-reviews', {
-        url: '/show-reviews',
-        templateUrl: 'views/show-reviews.html',
-        controller: 'ReviewShowController'
-      })
       .state('add-review', {
         url: '/add-review',
         templateUrl: 'views/add-review.html',
-        controller: 'ReviewAddController',
-        authenticate: true //redirect unauthenticated users
+        controller: 'AddReviewController',
+        authenticate: true
+      })
+      .state('delete-review', {
+        url: '/delete-review/:id',
+        controller: 'DeleteReviewController',
+        authenticate: true
+      })
+      .state('forbidden', {
+        url: '/forbidden',
+        templateUrl: 'views/forbidden.html',
       })
       .state('login', {
         url: '/login',
@@ -25,6 +29,17 @@ angular
       .state('logout', {
         url: '/logout',
         controller: 'AuthLogoutController'
+      })
+      .state('show-reviews', {
+        url: '/show-reviews',
+        templateUrl: 'views/show-reviews.html',
+        controller: 'ShowReviewsController'
+      })
+      .state('show-my-reviews', {
+        url: '/show-my-reviews',
+        templateUrl: 'views/show-my-reviews.html',
+        controller: 'ShowMyReviewsController',
+        authenticate: true
       });
     $urlRouterProvider.otherwise('show-reviews');
   }])
@@ -33,8 +48,7 @@ angular
       // redirect to login page if not logged in
       if (next.authenticate && !$rootScope.currentUser) {
         event.preventDefault(); //prevent current page from loading
-        $state.go('login');
+        $state.go('forbidden');
       }
     });
   }]);
-

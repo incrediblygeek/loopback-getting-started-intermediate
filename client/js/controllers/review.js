@@ -1,17 +1,6 @@
 angular
   .module('app')
-  .controller('ReviewShowController', ['$scope', 'Review', function($scope,
-      Review) {
-    $scope.reviews = Review.find({
-      filter: {
-        include: [
-          'coffeeShop',
-          'reviewer'
-        ]
-      }
-    });
-  }])
-  .controller('ReviewAddController', ['$scope', 'CoffeeShop', 'Review',
+  .controller('AddReviewController', ['$scope', 'CoffeeShop', 'Review',
       '$state', function($scope, CoffeeShop, Review, $state) {
     $scope.coffeeShops = [];
     $scope.selectedShop;
@@ -37,4 +26,37 @@ angular
           $state.go('show-reviews');
         });
     };
+  }])
+  .controller('DeleteReviewController', ['$scope', 'Review', '$state',
+      '$stateParams', function($scope, Review, $state, $stateParams) {
+    Review.deleteById({ id: $stateParams.id })
+      .$promise
+      .then(function() {
+        $state.go('show-my-reviews');
+      });
+  }])
+  .controller('ShowReviewsController', ['$scope', 'Review', function($scope,
+      Review) {
+    $scope.reviews = Review.find({
+      filter: {
+        include: [
+          'coffeeShop',
+          'reviewer'
+        ]
+      }
+    });
+  }])
+  .controller('ShowMyReviewsController', ['$scope', 'Review', '$rootScope',
+      function($scope, Review, $rootScope) {
+    $scope.reviews = Review.find({
+      filter: {
+        where: {
+          publisherId: $rootScope.currentUser.id
+        },
+        include: [
+          'coffeeShop',
+          'reviewer'
+        ]
+      }
+    });
   }]);

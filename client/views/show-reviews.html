@@ -1,8 +1,6 @@
-<div class="home">
-  <ul>
-    <li class="review" ng-repeat="r in reviews.slice().reverse()">
-      {{r.date | date}} - {{r.rating}}&#9733; - {{r.coffeeShop.name}} -
-      {{r.reviewer.email}} - {{r.comments}}
-    </li>
-  </ul>
-<div>
+<ul>
+  <li class="review" ng-repeat="r in reviews.slice().reverse()">
+    {{r.date | date}} - {{r.rating}}&#9733; - {{r.coffeeShop.name}} -
+    {{r.reviewer.email}} - {{r.comments}}
+  </li>
+</ul>

@@ -1,6 +1,4 @@
-loopback-example-intermediate
-=============================
-
+#loopback-example-intermediate
 LoopBack intermediate "golden path" example
 
 #Model relations
