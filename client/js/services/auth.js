@@ -30,11 +30,7 @@ angular
          email: email,
          password: password
        })
-       .$promise
-       .then(function(result) {
-         console.log(arguments);
-         //$rootScope.currentUser = null;
-       });
+       .$promise;
     }
 
     return {

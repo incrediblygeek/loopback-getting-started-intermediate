@@ -34,7 +34,7 @@ angular
       .deleteById({ id: $stateParams.id })
       .$promise
       .then(function() {
-        $state.go('show-my-reviews');
+        $state.go('my-reviews');
       });
   }])
   .controller('EditReviewController', ['$scope', '$q', 'CoffeeShop', 'Review',
