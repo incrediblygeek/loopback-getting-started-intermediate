@@ -6,4 +6,9 @@ module.exports = function(Review) {
     req.body.publisherId = req.accessToken.userId;
     next();
   });
+
+  Review.beforeRemote('save', function(context, user, next) {
+    console.log(context.req.body);
+    next();
+  });
 };

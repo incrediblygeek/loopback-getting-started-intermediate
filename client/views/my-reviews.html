@@ -4,7 +4,8 @@
       <a ui-sref="add-review">add one.</a></li>
   <li class="review" ng-repeat="r in reviews.slice().reverse()">
     {{r.date | date}} - {{r.rating}}&#9733; - {{r.coffeeShop.name}} -
-    {{r.reviewer.email}} - {{r.comments}} <a ui-sref="delete-review({ id: r.id
-      })">Delete</a>
+        {{r.reviewer.email}} - {{r.comments}} <a ui-sref="edit-review({
+        id: r.id })">Edit</a> <a ui-sref="delete-review({ id: r.id })">Delete
+        </a>
   </li>
 </ul>

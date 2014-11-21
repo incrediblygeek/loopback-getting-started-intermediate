@@ -8,8 +8,14 @@ angular
     $stateProvider
       .state('add-review', {
         url: '/add-review',
-        templateUrl: 'views/add-review.html',
+        templateUrl: 'views/review-form.html',
         controller: 'AddReviewController',
+        authenticate: true
+      })
+      .state('edit-review', {
+        url: '/edit-review/:id',
+        templateUrl: 'views/review-form.html',
+        controller: 'EditReviewController',
         authenticate: true
       })
       .state('delete-review', {
@@ -30,16 +36,16 @@ angular
         url: '/logout',
         controller: 'AuthLogoutController'
       })
+      .state('my-reviews', {
+        url: '/my-reviews',
+        templateUrl: 'views/my-reviews.html',
+        controller: 'MyReviewsController',
+        authenticate: true
+      })
       .state('show-reviews', {
         url: '/show-reviews',
         templateUrl: 'views/show-reviews.html',
         controller: 'ShowReviewsController'
-      })
-      .state('show-my-reviews', {
-        url: '/show-my-reviews',
-        templateUrl: 'views/show-my-reviews.html',
-        controller: 'ShowMyReviewsController',
-        authenticate: true
       });
     $urlRouterProvider.otherwise('show-reviews');
   }])

@@ -15,7 +15,7 @@
         <ul>
           <li ng-show="currentUser">Hello {{currentUser.email}}</li>
           <li><a ui-sref="show-reviews" ui-sref-active="active">Show Reviews</a></li>
-          <li ng-show="currentUser"><a ui-sref="show-my-reviews" ui-sref-active="active">Show My Reviews</a></li>
+          <li ng-show="currentUser"><a ui-sref="my-reviews" ui-sref-active="active">My Reviews</a></li>
           <li ng-show="currentUser"><a ui-sref="add-review" ui-sref-active="active">Add Review</a></li>
           <li ng-hide="currentUser"><a ui-sref="login" ui-sref-active="active">Log in</a></li>
           <li ng-show="currentUser"><a ui-sref="logout" ui-sref-active="active">Log out</a></li>
