@@ -42,6 +42,15 @@ angular
         controller: 'MyReviewsController',
         authenticate: true
       })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'views/registration-form.html',
+        controller: 'RegistrationController',
+      })
+      .state('register-success', {
+        url: '/register/success',
+        templateUrl: 'views/registration-success.html'
+      })
       .state('show-reviews', {
         url: '/show-reviews',
         templateUrl: 'views/show-reviews.html',
