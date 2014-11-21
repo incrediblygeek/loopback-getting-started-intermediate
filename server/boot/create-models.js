@@ -73,7 +73,7 @@ module.exports = function(app) {
         {
           date: Date.now() - (DAY_IN_MILLISECONDS),
           rating: 4,
-          comments: 'I go here everyday',
+          comments: 'I go here everyday.',
           publisherId: reviewers[2].id,
           coffeeShopId: reviewers[2].id,
         }

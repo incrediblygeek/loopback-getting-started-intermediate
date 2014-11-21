@@ -1,6 +1,6 @@
 <h2>My reviews</h2>
 <ul>
-  <li ng-show="reviews.length < 1">No reviews found, you should
+  <li class="review" ng-show="reviews.length < 1">No reviews found, you should
       <a ui-sref="add-review">add one.</a></li>
   <li class="review" ng-repeat="r in reviews.slice().reverse()">
     {{r.date | date}} - {{r.rating}}&#9733; - {{r.coffeeShop.name}} -

@@ -2,18 +2,15 @@
 <html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
-    <title>LoopBack example intermediate</title>
+    <title>loopback-getting-started-2</title>
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
     <header>
-      <section class="logo">
-        <h1>Coffee shop reviews</h1>
-      </section>
-
+      <h1>Coffee shop reviews</h1>
+      <h2 ng-show="currentUser">Hello {{currentUser.email}}</h2>
       <nav>
         <ul>
-          <li ng-show="currentUser">Hello {{currentUser.email}}</li>
           <li><a ui-sref="show-reviews" ui-sref-active="active">Show Reviews</a></li>
           <li ng-hide="currentUser"><a ui-sref="register" ui-sref-active="active">Register a new user</a></li>
           <li ng-show="currentUser"><a ui-sref="my-reviews" ui-sref-active="active">My Reviews</a></li>

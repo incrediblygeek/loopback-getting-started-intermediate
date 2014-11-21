@@ -1,15 +1,40 @@
+/*global*/
 * {
-  border-sizing:border-box;
   margin:0;
   padding:0;
 }
 body {
-  font-family:'Courier New';
+  font-family:'courier new';
   font-size:1rem;
 }
-header {
+/*main header*/
+body > header {
   border-bottom:1px solid #ccc;
 }
-header nav li a.active {
-  color:red;
+body > header h1 {
+  font-size:2rem;
+  padding:1rem 1rem 0 1rem;
 }
+body > header h2 {
+  font-size:1rem;
+  padding:0 1rem;
+}
+/*nav*/
+body > header nav {
+  padding:1rem;
+}
+body > header nav li {
+  border-radius:.25rem;
+  display:inline-block;
+  padding-bottom:.5rem;
+}
+body > header nav li a {
+  color:#777;
+  padding:.5rem;
+  text-decoration:none;
+}
+body > header nav li a.active {
+  background:#eee;
+}
+/*main*/
+main header
