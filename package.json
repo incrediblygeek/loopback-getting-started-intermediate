@@ -1,5 +1,5 @@
 {
-  "name": "loopback-example-intermediate",
+  "name": "loopback-getting-started-2",
   "version": "0.0.0",
   "main": "server/server.js",
   "scripts": {
