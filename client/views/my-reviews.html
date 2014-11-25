@@ -1,11 +1,18 @@
-<h2>My reviews</h2>
-<ul>
-  <li class="review" ng-show="reviews.length < 1">No reviews found, you should
-      <a ui-sref="add-review">add one.</a></li>
-  <li class="review" ng-repeat="r in reviews.slice().reverse()">
-    {{r.date | date}} - {{r.rating}}&#9733; - {{r.coffeeShop.name}} -
-        {{r.reviewer.email}} - {{r.comments}} <a ui-sref="edit-review({
-        id: r.id })">Edit</a> <a ui-sref="delete-review({ id: r.id })">Delete
-        </a>
-  </li>
-</ul>
+<section>
+  <article ng-show="reviews.length < 1">
+    No reviews found.
+  </article>
+  <article ng-repeat="r in reviews.slice().reverse()">
+    <header>
+      <h1>{{r.date | date}} | {{r.coffeeShop.name}}</h1>
+      <h2>{{r.reviewer.email}}</h2>
+    </header>
+
+    <p>{{r.rating}}&#9733; - {{r.comments}}</p>
+
+    <div class="actions" ng-show="currentUser">
+      <button ui-sref="edit-review({ id: r.id })">Edit</button>
+      <button a ui-sref="delete-review({ id: r.id })">Delete</button>
+    </div>
+  </article>
+</section>

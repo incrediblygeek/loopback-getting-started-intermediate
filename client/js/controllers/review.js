@@ -1,11 +1,23 @@
 angular
   .module('app')
+  .controller('AllReviewsController', ['$scope', 'Review', function($scope,
+      Review) {
+    $scope.reviews = Review.find({
+      filter: {
+        include: [
+          'coffeeShop',
+          'reviewer'
+        ]
+      }
+    });
+  }])
   .controller('AddReviewController', ['$scope', 'CoffeeShop', 'Review',
       '$state', function($scope, CoffeeShop, Review, $state) {
     $scope.action = 'Add';
     $scope.coffeeShops = [];
     $scope.selectedShop;
     $scope.review = {};
+    $scope.isDisabled = false;
 
     CoffeeShop
       .find()
@@ -24,7 +36,7 @@ angular
         })
         .$promise
         .then(function() {
-          $state.go('show-reviews');
+          $state.go('all-reviews');
         });
     };
   }])
@@ -44,6 +56,7 @@ angular
     $scope.coffeeShops = [];
     $scope.selectedShop;
     $scope.review = {};
+    $scope.isDisabled = true;
 
     $q
       .all([
@@ -68,20 +81,9 @@ angular
       $scope.review
         .$save()
         .then(function(review) {
-          $state.go('show-reviews');
+          $state.go('all-reviews');
         });
     };
-  }])
-  .controller('ShowReviewsController', ['$scope', 'Review', function($scope,
-      Review) {
-    $scope.reviews = Review.find({
-      filter: {
-        include: [
-          'coffeeShop',
-          'reviewer'
-        ]
-      }
-    });
   }])
   .controller('MyReviewsController', ['$scope', 'Review', '$rootScope',
       function($scope, Review, $rootScope) {

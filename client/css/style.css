@@ -7,6 +7,44 @@ body {
   font-family:'courier new';
   font-size:1rem;
 }
+button {
+  background:#eee;
+  border:0;
+  color:#777;
+  cursor:pointer;
+  font-family:'courier new';
+  font-size:1rem;
+  padding:.5rem;
+}
+button:active {
+  background:#ddd;
+}
+[disabled] {
+  background:#eee;
+  color:#ccc;
+}
+fieldset {
+  color:#777;
+  padding:1rem;
+}
+fieldset legend {
+  border:1px solid #777;
+  padding:0 .5rem;
+}
+label {
+  display:inline-block;
+  text-align:right;
+  vertical-align:middle;
+  width:200px;
+}
+select {
+  background:#ddd;
+  text-indent: 0.01px;
+  text-overflow: "";
+}
+p {
+  padding:1rem;
+}
 /*main header*/
 body > header {
   border-bottom:1px solid #ccc;
@@ -24,7 +62,6 @@ body > header nav {
   padding:1rem;
 }
 body > header nav li {
-  border-radius:.25rem;
   display:inline-block;
   padding-bottom:.5rem;
 }
@@ -37,4 +74,32 @@ body > header nav li a.active {
   background:#eee;
 }
 /*main*/
-main header
+main section {
+  padding:1rem;
+}
+main section article {
+  padding-bottom:2rem;
+}
+main section article h1 {
+  font-size:1.5rem;
+}
+main section article h2 {
+  font-size:1rem;
+  margin-bottom:1rem;
+}
+/*main form*/
+main input,
+select,
+textarea {
+  background:#ddd;
+  border:0;
+  display:inline-block;
+  font-family:'courier new';
+  margin-bottom:1rem;
+  padding:.5rem;
+  vertical-align:middle;
+}
+main select,
+textarea {
+  width:300px;
+}

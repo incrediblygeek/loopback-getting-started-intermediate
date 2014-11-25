@@ -12,6 +12,11 @@ angular
         controller: 'AddReviewController',
         authenticate: true
       })
+      .state('all-reviews', {
+        url: '/all-reviews',
+        templateUrl: 'views/all-reviews.html',
+        controller: 'AllReviewsController'
+      })
       .state('edit-review', {
         url: '/edit-review/:id',
         templateUrl: 'views/review-form.html',
@@ -42,21 +47,16 @@ angular
         controller: 'MyReviewsController',
         authenticate: true
       })
-      .state('register', {
-        url: '/register',
-        templateUrl: 'views/registration-form.html',
-        controller: 'RegistrationController',
+      .state('sign-up', {
+        url: '/sign-up',
+        templateUrl: 'views/sign-up-form.html',
+        controller: 'SignUpController',
       })
-      .state('register-success', {
-        url: '/register/success',
-        templateUrl: 'views/registration-success.html'
-      })
-      .state('show-reviews', {
-        url: '/show-reviews',
-        templateUrl: 'views/show-reviews.html',
-        controller: 'ShowReviewsController'
+      .state('sign-up-success', {
+        url: '/sign-up/success',
+        templateUrl: 'views/sign-up-success.html'
       });
-    $urlRouterProvider.otherwise('show-reviews');
+    $urlRouterProvider.otherwise('all-reviews');
   }])
   .run(['$rootScope', '$state', function($rootScope, $state) {
     $rootScope.$on('$stateChangeStart', function(event, next) {
