@@ -45,7 +45,7 @@ select {
 p {
   padding:1rem;
 }
-/*main header*/
+/*header*/
 body > header {
   border-bottom:1px solid #ccc;
 }
