@@ -27,11 +27,11 @@
     "dataSource": "db",
     "public": false
   },
-  "Reviewer": {
+  "CoffeeShop": {
     "dataSource": "mysqlDs",
     "public": true
   },
-  "CoffeeShop": {
+  "Reviewer": {
     "dataSource": "mongoDs",
     "public": true
   },
