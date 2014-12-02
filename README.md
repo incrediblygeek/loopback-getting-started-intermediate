@@ -1,1 +1,1 @@
-#loopback-getting-started-2
+#loopback-getting-started-intermediate
